@@ -10,16 +10,9 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    <h2>salut </h2>
-    This friendly message is coming from:
+    <h1>Hello {{ app.user.username }}! ✅</h1>
+    <p> Bienvenue sur mon premier blog en Symfony </p>
 
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/blog/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/blog/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/blog/src/Controller/RegistrationController.php'|file_link(0) }}">REGISTRATION</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/blog/templates/registration/register.html.twig' |file_link(0) }}">REGISTRATION TWIG</a></code></li>
-
-    </ul>
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
 </div>
-{% endblock %}
+{% endblock %}  

@@ -19,6 +19,9 @@ class Articles
     #[ORM\Column(length: 255)]
     private ?string $Article = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $titre = null;
+
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
@@ -36,6 +39,17 @@ class Articles
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+        return $this;
     }
 
     public function getArticle(): ?string
