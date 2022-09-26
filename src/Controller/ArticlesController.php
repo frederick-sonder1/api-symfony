@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\Comments;
 use App\Form\ArticlesType;
+use App\Form\CommentsType;
 use App\Repository\ArticlesRepository;
+use App\Repository\CommentsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+// use Symfony\Component\DependencyInjection\Loader\Configurator\request;
 
 #[Route('/articles')]
 class ArticlesController extends AbstractController
@@ -41,10 +45,23 @@ class ArticlesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_articles_show', methods: ['GET'])]
-    public function show(Articles $article): Response
+    public function show(Articles $article ,/* Request $request, CommentsRepository $commentsRepository*/): Response
     {
+        //  $comment = new Comments();
+        //  $form = $this->createForm(CommentsType::class, $comment);
+        //  $form->handleRequest($request);
+
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $commentsRepository->add($comment, true);
+        //     // $this->getUser();
+
+        //     return $this->redirectToRoute('app_comments_index', [], Response::HTTP_SEE_OTHER);
+        // }
+
         return $this->render('articles/show.html.twig', [
             'article' => $article,
+            //  'comment' => $comment, 
+            // 'form' => $form->createView(),
         ]);
     }
 

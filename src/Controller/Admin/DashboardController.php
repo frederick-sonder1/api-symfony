@@ -22,7 +22,11 @@ class DashboardController extends AbstractDashboardController
         // Option 1. You can make your dashboard redirect to some common page of your backend
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
         $userview = $adminUrlGenerator->setController(UserCrudController::class)->generateUrl();
-        return $this->redirect($userview);
+
+        // $adminUrlGenerator1 = $this->container->get(AdminUrlGenerator::class);
+        // $articleview = $adminUrlGenerator1->setController(ArticlesCrudController::class)->generateUrl();
+
+        return $this->redirect($userview)/*($articleview)*/;
 
         // $articleview = $adminUrlGenerator->setController(ArticlesCrudController::class)->generateUrl();
         // return $this->redirect($articleview);
@@ -52,10 +56,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToRoute('Accueil', 'fas fa-redo', 'app_home');
         yield MenuItem::linkToRoute('Articles', 'fas fa-undo', 'app_articles_index');
 
-        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        $articleview = $adminUrlGenerator->setController(ArticlesCrudController::class)->generateUrl();
+       
 
-        yield MenuItem::linkToRoute( $articleview, 'fas fa-list', Articles::class);
+        // yield MenuItem::linkToRoute( $articleview, 'fas fa-list', Articles::class);
 
     }
 }
