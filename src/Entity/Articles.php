@@ -119,4 +119,10 @@ class Articles
 
         return $this;
     }
+
+    // public function __toString()
+    // {
+    //     $comment = $this->getComments();
+    //     return $this->$comment;
+    // }
 }
