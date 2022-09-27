@@ -2,11 +2,6 @@
 
 namespace App\DataFixtures;
 
-<<<<<<< HEAD
-use App\Entity\Articles;
-use Doctrine\Persistence\ObjectManager;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-=======
 use Faker\Factory;
 use Faker\Generator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -16,7 +11,6 @@ use App\Entity\User;
 use App\Entity\Comments;
 
 
->>>>>>> b12cba42dd232577b4d22083e3d43b9865c9fb02
 
 class AppFixtures extends Fixture
 {
@@ -24,13 +18,10 @@ class AppFixtures extends Fixture
 
     public function __construct()
     {
-<<<<<<< HEAD
         $article = new Articles();
         $manager->persist($article);
-=======
         $this->faker = Factory::create('fr_FR');
     }
->>>>>>> b12cba42dd232577b4d22083e3d43b9865c9fb02
 
     public function load(ObjectManager $manager): void
     {
