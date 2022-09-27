@@ -2,28 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Articles;
-use App\Controller\Admin\UserCrudController;
+use App\Entity\Comments;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class ArticlesType extends AbstractType
+class CommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre', TextType::class)
-            ->add('Article')
+            ->add('Comment')
             ->add('date')
+            // ->add('User')
+            // ->add('article')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Articles::class,
+            'data_class' => Comments::class,
         ]);
     }
 }

@@ -1,28 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles index{% endblock %}
+{% block title %}Commentaires index{% endblock %}
 
 {% block body %}
-    <h1>Articles</h1>
-
-    <table class="table table-dark">
+<h1>Commentaires</h1>
+<table class="table table-dark">
         <thead>
             <tr>
                 <th class="col">Id</th>
-                <th class="col">Titre</th>
-                <th class="col">Article</th>
+                <th class="col">commentaire</th>
                 <th class="col">Date</th>
                 <th class="col">actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for article in articles %}
+        {% for comment in Comments %}
             <tr>
-                <td>{{ article.id }}</td>
- 
-                <td>{{ article.titre }}</td>
-                <td>{{ article.Article }}</td>
-                <td>{{ article.date ? article.date|date('Y-m-d') : '' }}</td>
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.comments }}</td>
+                <td>{{ comment.date ? comment.date|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('app_articles_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('app_articles_edit', {'id': article.id}) }}">edit</a>
@@ -35,6 +31,6 @@
         {% endfor %}
         </tbody>
     </table>
+    <a href="{{ path('app_Comments_new') }}">Create new</a>
 
-    <a href="{{ path('app_articles_new') }}">Create new</a>
 {% endblock %}
