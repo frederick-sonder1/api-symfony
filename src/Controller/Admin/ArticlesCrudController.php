@@ -18,9 +18,11 @@ class ArticlesCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+
             TextField::new('titre'),
             TextEditorField::new('article'),
+            TextField::new('user.username', 'Auteur'),
+
         ];
     }
     

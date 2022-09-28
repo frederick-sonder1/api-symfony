@@ -5,67 +5,29 @@
 
 {% block body %}
 	<h1>Articles</h1>
-
-<<<<<<< HEAD
-    <table class="table table-dark">
-        <tbody>
-            <tr>
-                <th class="col">Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th class="col">Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            {# <tr>
-                <th class="col">Contenu</th>
-                <td>{{ article.User_Id }}</td>
-            <tr> #}
-                <th class="col">Article</th>
-                <td>{{ article.Article }}</td>
-            </tr>
-=======
 	<table class="table table-dark">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Titre</th>
+				<th scope="col">Contenu</th>
+				<th scope="col">Auteur</th>
+				<th scope="col">Date de création</th>
+				<th scope="col">Actions</th>
+			</tr>
 		<tbody>
 			<tr>
-				<th class="col">Id</th>
-				<td>{{ article.id }}</td>
-			</tr>
-			<tr>    
-				<th class="col">Article</th>
-				<td>{{ article.Article }}</td>
-			</tr>
-			<tr>
-				<th class="col">Date</th>
-				<td>{{ article.date ? article.date|date('Y-m-d') : '' }}</td>
+				<td class="col">{{ article.id }}</td>  
+				<td class="col">{{ article.titre }}</td>
+				<td class="col">{{ article.Article }}</td>
+				<td class="col">{{ article.user.username }}</td>
+				<td class="col">{{ article.date ? article.date|date('Y-m-d') : '' }}</td>
+				<td class="col"><a href="{{ path('app_articles_edit', {'id': article.id}) }}">edit</a></td>
 			</tr>
 		</tbody>
 	</table>
-	{# {{ include('comments/new.html.twig') }}  #}
-    {# {{ dump(comment.vars.data) }} #}
-	{# <table class="table">
-        <thead>
->>>>>>> b12cba42dd232577b4d22083e3d43b9865c9fb02
-            <tr>
-                <th>user Id</th>
-                <th>article_id</th>
-                <th>comment</th>
-                {# <th>Actions</th> #}
-            </tr>
-		<tbody>
-			{# {% for comment in comments %}
-				<tr>
-					<td>{{ comment.user_id }}</td>
-					<td>{{ comment.article_id }}</td>
-					<td>{{ comment.comment}}</td>
-				{% endfor %}
-			</tbody>
-		</tbody>
-	</table> #} 
-
 	<a href="{{ path('app_articles_index') }}">back to list</a>
-
-	<a href="{{ path('app_articles_edit', {'id': article.id}) }}">edit</a>
+{{dump(article)}}
 
 	{{ include('articles/_delete_form.html.twig') }}
 {% endblock %}

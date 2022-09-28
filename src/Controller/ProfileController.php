@@ -14,11 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProfileController extends AbstractController
 {
-    #[Route('/profile', name: 'app_profile')]
+    #[Route('/profile', name: 'app_profile', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = new User();
-        $form = $this->createForm(profilType::class, $user);
+        $user = $this->getUser();
+        $form = $this->createForm(ProfilType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -29,7 +29,7 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
         return $this->render('profile/index.html.twig', [
-            'profilForm' => $form->createView(),
+            'form' => $form->createView(),
             'controller_name' => 'ProfileController',
         ]);
     }
