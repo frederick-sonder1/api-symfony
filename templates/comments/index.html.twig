@@ -1,36 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commentaires index{% endblock %}
+{% block title %}Commentaires index
+{% endblock %}
 
 {% block body %}
-<h1>Commentaires</h1>
-<table class="table table-dark">
-        <thead>
-            <tr>
-                <th class="col">Id</th>
-                <th class="col">commentaire</th>
-                <th class="col">Date</th>
-                <th class="col">actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for comment in Comments %}
-            <tr>
-                <td>{{ comment.id }}</td>
-                <td>{{ comment.Comment }}</td>
-                <td>{{ comment.date ? comment.date|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_Comments_show', {'id': comment.id}) }}">show</a>
-                    <a href="{{ path('app_Comments_edit', {'id': comment.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('app_Comments_new') }}">Create new</a>
+	<h1>Commentaires</h1>
+	<table class="table table-dark">
+		<thead>
+			<tr>
+				<th class="col">Id</th>
+				<th class="col">commentaire</th>
+				<th class="col">Date</th>
+				<th class="col">actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for comment in Comments %}
+				<tr>
+					<td>{{ comment.id }}</td>
+					<td>{{ comment.Comment }}</td>
+					<td>{{ comment.date ? comment.date|date('Y-m-d') : '' }}</td>
+					<td>
+						<a href="{{ path('app_Comments_show', {'id': comment.id}) }}">show</a>
+						<a href="{{ path('app_Comments_edit', {'id': comment.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="text-center">
+		<a href="{{ path('app_Comments_new') }}">Nouveau commentaire</a>
+	</div>
 
 {% endblock %}

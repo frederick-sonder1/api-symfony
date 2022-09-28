@@ -31,6 +31,7 @@ class ArticlesController extends AbstractController
         $article = new Articles();
         $form = $this->createForm(ArticlesType::class, $article);
         $form->handleRequest($request);
+        // $id=(user.id);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $articlesRepository->add($article, true);
@@ -41,6 +42,7 @@ class ArticlesController extends AbstractController
         return $this->renderForm('articles/new.html.twig', [
             'article' => $article,
             'form' => $form,
+            // 'id'    => $id,
         ]);
     }
 
