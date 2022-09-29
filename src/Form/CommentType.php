@@ -6,6 +6,8 @@ use App\Entity\Comments;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CommentType extends AbstractType
 {
@@ -13,10 +15,10 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('Comment')
-            ->add('date')
-            // ->add('User')
-            // ->add('article')
-        ;
+            ->add('Submit', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-primary'],
+                'label' => 'envoyer',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!
+{% block title %}Profil
 {% endblock %}
 
 {% block body %}
@@ -12,12 +12,11 @@
 
 	<div class="card text-center">
 		<div class="card-body">
-
-			<p class="card-description">Role utilisateur :{{app.user.roles[0]}}
-			</p>
+			<p class="card-description">Role utilisateur :{{app.user.roles[0]}}</p>
 			{{ include('profile/_form.html.twig') }}
 		</div>
-
-		<a href="{{ path('app_logout') }}" class="btn btn-lg btn-danger">Se déconnecter</a>
+	</div>
+	<div class="text-center">
+		<a href="{{ path('app_logout') }}" class="btn btn-sm btn-danger">Se déconnecter</a>
 	</div>
 {% endblock %}

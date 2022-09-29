@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Comments;
 use App\Form\CommentType;
-use App\Form\CommentsType;
 use App\Repository\CommentsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -69,6 +68,7 @@ class CommentsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_Comments_delete', methods: ['POST'])]
+    #[IsGranted(["ROLE_ADMIN"])]
     public function delete(Request $request, Comments $comments, CommentsRepository $CommentsRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$comments->getId(), $request->request->get('_token'))) {

@@ -19,7 +19,6 @@ class DashboardController extends AbstractDashboardController
     #[IsGranted(["ROLE_ADMIN"])]
     public function index(): Response
     {
-        // Option 1. You can make your dashboard redirect to some common page of your backend
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
        
         $userview = $adminUrlGenerator->setController(UserCrudController::class)->generateUrl();

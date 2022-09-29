@@ -29,8 +29,7 @@
 					<td>{{ article.date ? article.date|date('Y-m-d') : '' }}</td>
 					<td>{{ article.user.username }}</td>
 					<td>
-						<a href="{{ path('app_articles_show', {'id': article.id}) }}">show</a>
-						<a href="{{ path('app_articles_edit', {'id': article.id}) }}">edit</a>
+						<a href="{{ path('app_articles_show', {'id': article.id}) }}">show</a>	
 					</td>
 				</tr>
 			{% else %}

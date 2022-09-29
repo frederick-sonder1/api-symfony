@@ -116,13 +116,6 @@ class Articles
                 $comment->setArticle(null);
             }
         }
-
         return $this;
     }
-
-    // public function __toString()
-    // {
-    //     $comment = $this->getComments();
-    //     return $this->$comment;
-    // }
 }
