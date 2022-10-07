@@ -16,7 +16,7 @@ class CommentType extends AbstractType
         $builder
             ->add('Comment')
             ->add('Submit', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary'],
+                'attr' => ['class' => 'btn btn-primary mt-md-2'],
                 'label' => 'envoyer',
             ]);
     }

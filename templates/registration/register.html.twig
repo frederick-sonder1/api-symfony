@@ -1,25 +1,26 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Inscription</h1>
-
-    {{ form_start(registrationForm) }}
-    <div class="form-group text-center">
-        {{ form_row(registrationForm.username) }}
-    </div>
-    <div class="form-group text-center">
-        {{ form_row(registrationForm.plainPassword, {
+	<h1 class="text-center mt-lg-10 mb-4">Inscription</h1>
+	<div class="container card text-center border border-primary border-4 rounded">
+		{{ form_start(registrationForm) }}
+		<div class="form-group text-center mt-4">
+			<i class="fa fa-calendar"></i>{{ form_row(registrationForm.username) }}
+		</div>
+		<div class="form-group text-center">
+			{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-    </div>
-    <div class="form-group text-center">
-        {{ form_row(registrationForm.agreeTerms) }}
-    </div>
-    <div class="form-group text-center">
-        <button type="submit" class="btn btn-lg btn-primary">Inscrivez-vous</button>
-    </div>
-    {{ form_end(registrationForm) }}
+		</div>
+		<div class="form-group text-center">
+			{{ form_row(registrationForm.agreeTerms) }}
+		</div>
+		<div class="form-group text-center mb-4">
+			<button type="submit" class="btn btn-lg btn-primary">Inscrivez-vous</button>
+		</div>
+	</div>
+	{{ form_end(registrationForm) }}
 {% endblock %}

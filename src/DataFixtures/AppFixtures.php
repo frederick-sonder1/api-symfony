@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
     public function __construct()
     {
         $article = new Articles();
-        $manager->persist($article);
+        // $manager->persist($article);
         $this->faker = Factory::create('fr_FR');
     }
 

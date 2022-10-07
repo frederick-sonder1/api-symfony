@@ -4,15 +4,17 @@ namespace App\Controller;
 
 use App\Entity\Articles;
 use App\Entity\Comments;
-use App\Form\ArticlesType;
 use App\Form\CommentType;
+use App\Form\ArticlesType;
+use Doctrine\ORM\Mapping\OrderBy;
 use App\Repository\ArticlesRepository;
 use App\Repository\CommentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/articles')]
 class ArticlesController extends AbstractController
@@ -20,13 +22,22 @@ class ArticlesController extends AbstractController
     #[Route('/', name: 'app_articles_index', methods: ['GET'])]
     public function index(ArticlesRepository $articlesRepository): Response
     {
+        $articles =  $articlesRepository->findAll([],['id' => 'desc']);
+        // $donnees = $articlesRepository->findAll([],['id' => 'desc']);
+        // $articles = $paginator->paginate(
+        //     $donnees, // Requête contenant les données à paginer (ici nos articles)
+        //     $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+        //     6 // Nombre de résultats par page
+        // );
+        // $manager->persist($articles);
+        // $manager->flush();
         return $this->render('articles/index.html.twig', [
-            'articles' => $articlesRepository->findAll(),
+            'articles' => $articles,
         ]);
     }
 
     #[Route('/new', name: 'app_articles_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ArticlesRepository $articlesRepository, EntityManagerInterface $manager): Response
+    public function new(Request $request, EntityManagerInterface $manager): Response
     {
         $article = new Articles();
         $form = $this->createForm(ArticlesType::class, $article);
@@ -49,7 +60,7 @@ class ArticlesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_articles_show', methods: ['GET', 'POST'])]
-    public function show($id, Articles $article , Request $request, CommentsRepository $commentsRepository, ArticlesRepository $ArticlesRepository, EntityManagerInterface $manager): Response
+    public function show($id, Articles $article , Request $request, CommentsRepository $commentsRepository, ArticlesRepository $ArticlesRepository): Response
     {
         $comment = new Comments();
         $comments = $commentsRepository->findBy(['article' => $id]);
@@ -62,13 +73,11 @@ class ArticlesController extends AbstractController
             $comment->setUser($this->getUser());
             $comment->setArticle($article);
             $comment->setDate(new \DateTime());
-            $manager->persist($comment);
-            $manager->flush();
         }
 
         return $this->render('articles/show.html.twig', [
             'article' => $article,
-             'comments' => $comments, 
+             'comments' => $comments,
             'form' => $form->createView(),
         ]);
     }

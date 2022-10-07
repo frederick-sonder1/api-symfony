@@ -4,10 +4,10 @@
 
 {% block body %}
 
-<div class="card text-center">
-    <div class="card-body">
-        <h1 class="card-title">Hello {{ app.user.username }}! ✅</h1>
-        <p class="card-description"> Bienvenue sur mon premier blog en Symfony </p>
+<div class="container text-center mt-xl-6 mt-md-2 mt-lg-5 ">
+    <div class="card-body mt-xl-6">
+        <h1 class="card-title mt-xl-6 mt-md-2 mt-lg-5">Hello {{ app.user.username }}! ✅</h1>
+        <p class="card-description mt-xl-6 mt-md-2 mt-lg-5"> Bienvenue sur mon premier blog en Symfony </p>
         <a href="{{ path('app_logout') }}" class="btn btn-danger">Se déconnecter</a>
     </div>
 </div>
