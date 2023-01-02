@@ -1,0 +1,8 @@
+App\Entity\Users:
+  user_{1..75}:
+    email: <email()>
+    password: "mdpmdp"
+    firstname: <firstname()>
+    lastname: <lastname()>
+    createdAt: <dateImmutable(<dateTime()>)>
+    groupe: '@groupe_*'
